@@ -11,6 +11,7 @@ interface KpiCard {
   title: string;
   value: number;
   trend?: string;
+  color: string;
 }
 
 @Component({
@@ -56,17 +57,34 @@ export class ShipmentListComponent implements OnInit, AfterViewInit {
     this.setupFilterPredicate();
   }
 
+  // ---------------- KPI LOGIC ----------------
   private buildKpiCards(data: Shipment[]): void {
     const total = data.length;
+    const booked = data.filter(s => s.status === 'Booked').length;
     const inTransit = data.filter(s => s.status === 'In Transit').length;
     const delivered = data.filter(s => s.status === 'Delivered').length;
-    const booked = data.filter(s => s.status === 'Booked').length;
 
     this.kpiCards = [
-      { title: 'Total Shipments', value: total },
-      { title: 'Booked', value: booked },
-      { title: 'In Transit', value: inTransit },
-      { title: 'Delivered', value: delivered }
+      {
+        title: 'Total Shipments',
+        value: total,
+        color: 'kpi-blue'
+      },
+      {
+        title: 'Booked',
+        value: booked,
+        color: 'kpi-purple'
+      },
+      {
+        title: 'In Transit',
+        value: inTransit,
+        color: 'kpi-green'
+      },
+      {
+        title: 'Delivered',
+        value: delivered,
+        color: 'kpi-orange'
+      }
     ];
   }
 
@@ -74,13 +92,14 @@ export class ShipmentListComponent implements OnInit, AfterViewInit {
     this.countries = Array.from(new Set(data.map(s => s.country))).sort();
   }
 
+  // ---------------- FILTER LOGIC ----------------
   private setupFilterPredicate(): void {
     this.dataSource.filterPredicate = (row: Shipment, filter: string) => {
       const parsed = filter
         ? JSON.parse(filter) as { search: string; status: string; country: string }
         : { search: '', status: '', country: '' };
 
-      const text = (parsed.search || '').trim().toLowerCase();
+      const text = parsed.search.toLowerCase();
 
       const matchesText =
         !text ||
@@ -103,8 +122,7 @@ export class ShipmentListComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(): void {
-    const filterJson = JSON.stringify(this.filter);
-    this.dataSource.filter = filterJson;
+    this.dataSource.filter = JSON.stringify(this.filter);
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -118,6 +136,7 @@ export class ShipmentListComponent implements OnInit, AfterViewInit {
     this.applyFilter();
   }
 
+  // ---------------- AUTH ----------------
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);

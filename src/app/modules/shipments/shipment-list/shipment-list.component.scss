@@ -1,0 +1,33 @@
+.kpi-card {
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Soft backgrounds */
+.kpi-blue {
+  background: linear-gradient(135deg, #e8f0ff, #ffffff);
+}
+
+.kpi-purple {
+  background: linear-gradient(135deg, #f2e8ff, #ffffff);
+}
+
+.kpi-green {
+  background: linear-gradient(135deg, #e9f9f0, #ffffff);
+}
+
+.kpi-orange {
+  background: linear-gradient(135deg, #fff2e6, #ffffff);
+}
+
+/* Trend text */
+.trend {
+  font-size: 0.8rem;
+  color: #198754;
+  font-weight: 500;
+}
