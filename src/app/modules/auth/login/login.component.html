@@ -1,0 +1,110 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- LEFT SIDE : CAROUSEL -->
+    <div class="col-md-8 d-none d-md-flex p-0 bg-light">
+
+      <div id="carouselExampleControlsNoTouching" class="carousel slide w-100 carousel-fixed" data-ride="carousel"
+        data-interval="3000" data-pause="hover">
+
+        <!-- FIXED TEXT OVERLAY -->
+        <div class="carousel-overlay">
+          <h1>TradeFlow Logistics</h1>
+          <p>Fast • Secure • Global Shipping Solutions</p>
+        </div>
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="https://cdn.pixabay.com/photo/2023/02/12/03/05/import-7784074_1280.jpg">
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://img.freepik.com/free-vector/hand-drawn-import-export-graphics_23-2149164081.jpg">
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://img.freepik.com/free-vector/hand-drawn-import-export-graphics_23-2149149327.jpg">
+          </div>
+
+          <div class="carousel-item">
+            <img
+              src="https://png.pngtree.com/background/20231101/original/pngtree-d-rendering-of-a-logistics-company-s-import-export-shipping-operations-picture-image_5835460.jpg">
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://wallpapercave.com/wp/wp10731207.jpg">
+          </div>
+
+        </div>
+
+        <!-- CONTROLS -->
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching"
+          data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching"
+          data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE : LOGIN FORM -->
+    <div class="col-md-4 d-flex align-items-center justify-content-center bg-white">
+  <mat-card class="login-card shadow text-center">
+
+    <!-- USER IMAGE -->
+    <div class="user-avatar">
+  <img
+    src="https://toppng.com/public/uploads/preview/men-silhouette-transparent-background-passport-size-photo-blank-115633922581mpulu62vp.png"
+    alt="User"
+  />
+</div>
+
+    <mat-card-header class="d-block">
+      <mat-card-title class="fw-bold mb-3">Login</mat-card-title>
+      <mat-card-subtitle class="mb-2">Sign in to your account</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-icon matPrefix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="w-100 py-2"
+          type="submit"
+          [disabled]="loginForm.invalid">
+          Login
+
+           <i class="fa fa-sign-out me-1"></i>
+        </button>
+
+        <div class="text-danger text-center mt-3" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="container-fluid">
+
+  <!-- TOP BAR -->
+  <div class="d-flex justify-content-end p-3">
+    <button class="btn btn-danger btn-sm" (click)="logout()">
+      <i class="fa fa-sign-out me-1"></i> Logout
+    </button>
+  </div>
+
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h5 class="text-muted mb-1">Admin / Staff Dashboard</h5>
+        <h2 class="mb-0">Welcome to Dashboard 🎉</h2>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <span class="me-2 text-muted">Logged in as: {{ userName }} ({{ userRole }})</span>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <div class="row mb-4">
+      <div class="col-md-3 mb-3" *ngFor="let card of kpiCards">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h6 class="text-muted mb-1">{{ card.title }}</h6>
+            <h3 class="mb-0">{{ card.value }}</h3>
+            <small class="text-success" *ngIf="card.trend">{{ card.trend }}</small>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0">
+            <button class="btn btn-link p-0" (click)="goTo(card.link)">
+              View details →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="row">
+      <!-- Recent shipments -->
+      <div class="col-lg-8 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Recent Shipments</h5>
+            <button class="btn btn-sm btn-primary" (click)="goTo('/shipments')">
+              View all
+            </button>
+          </div>
+          <div class="card-body p-0">
+            <table class="table mb-0 table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Customer</th>
+                  <th>Origin</th>
+                  <th>Destination</th>
+                  <th>ETD</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of recentShipments">
+                  <td>{{ s.ref }}</td>
+                  <td>{{ s.customer }}</td>
+                  <td>{{ s.origin }}</td>
+                  <td>{{ s.destination }}</td>
+                  <td>{{ s.etd | date }}</td>
+                  <td>
+                    <span class="badge bg-info" *ngIf="s.status === 'Booked'">Booked</span>
+                    <span class="badge bg-warning" *ngIf="s.status === 'In Transit'">In Transit</span>
+                    <span class="badge bg-success" *ngIf="s.status === 'Delivered'">Delivered</span>
+                  </td>
+                  <td class="text-end">
+                    <button class="btn btn-sm btn-outline-secondary" (click)="viewShipment(s)">
+                      View
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="recentShipments.length === 0">
+                  <td colspan="7" class="text-center py-3 text-muted">
+                    No shipments yet.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pending actions / quick links -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow-sm mb-3">
+          <div class="card-header bg-white">
+            <h5 class="mb-0">Pending Actions</h5>
+          </div>
+          <div class="list-group list-group-flush">
+            <button type="button"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              (click)="goTo('/documents')">
+              Documents to upload
+              <span class="badge bg-danger rounded-pill">{{ pendingDocs }}</span>
+            </button>
+            <button type="button"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              (click)="goTo('/payments')">
+              Payments due
+              <span class="badge bg-warning rounded-pill">{{ pendingPayments }}</span>
+            </button>
+            <button type="button"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              (click)="goTo('/quotes')">
+              Quotes awaiting approval
+              <span class="badge bg-info rounded-pill">{{ pendingQuotes }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Quick Actions</h5>
+            <small class="text-muted">Most used shortcuts</small>
+          </div>
+
+          <div class="card-body">
+            <div class="row g-2">
+              <div class="col-6 mb-2">
+                <button class="btn btn-primary w-100 d-flex align-items-center justify-content-between"
+                  (click)="goTo('/shipments/new')">
+                  <span>
+                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                    New Shipment
+                  </span>
+                  <i class="bi bi-chevron-right small"></i>
+                </button>
+              </div>
+
+              <div class="col-6">
+                <button class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center"
+                  (click)="goTo('/quotes/new')">
+                  <i class="bi bi-file-earmark-text me-2"></i>
+                  Create Quote
+                </button>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center"
+                  (click)="goTo('/customers/new')">
+                  <i class="bi bi-person-plus me-2"></i>
+                  Add Customer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

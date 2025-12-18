@@ -1,0 +1,141 @@
+/* Card styling */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 16px;
+}
+
+/* Avatar wrapper */
+.user-avatar {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Avatar image */
+.user-avatar img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: white;
+  padding: 8px;
+}
+
+
+.carousel-fixed {
+  height: 100vh;           // full height of screen
+}
+
+.carousel-fixed .carousel-inner,
+.carousel-fixed .carousel-item {
+  height: 100%;
+}
+
+.carousel-fixed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       // 🔥 magic property
+}
+
+
+/* Carousel height fixed */
+.carousel-fixed {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel-fixed img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* TEXT OVERLAY */
+.carousel-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 30px 50px;
+  border-radius: 8px;
+}
+
+.carousel-overlay h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.carousel-overlay p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.carousel-fixed .carousel-inner,
+.carousel-fixed .carousel-item {
+  height: 100%;
+}
+
+.carousel-fixed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Login card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+
+/* AUTO COLOR ARROWS */
+/* Default → white arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(0);
+}
+
+/* Light background → black arrows */
+.bg-light .carousel-control-prev-icon,
+.bg-light .carousel-control-next-icon {
+  filter: invert(1);
+}
+
+
+/* Dark image override */
+.carousel-item img {
+  background-color: #000;
+}
+
+
+mat-card-title {
+  font-size: 26px;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+  color: gray;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  font-size: 16px;
+}
+
+

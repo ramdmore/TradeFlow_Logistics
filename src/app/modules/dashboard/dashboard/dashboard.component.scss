@@ -1,0 +1,56 @@
+button.btn-danger {
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.dashboard-container {
+  padding: 24px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card h2 {
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.trend {
+  color: green;
+  font-size: 13px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quick-actions button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 16px;
+  color: #888;
+}
